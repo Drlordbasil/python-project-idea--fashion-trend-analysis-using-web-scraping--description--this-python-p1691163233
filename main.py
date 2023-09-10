@@ -29,8 +29,9 @@ class FashionTrendAnalyzer:
             color = article.find('div', class_='color').text
             fabric = article.find('div', class_='fabric').text
             accessories = article.find('div', class_='accessories')
-            accessories = [accessory.strip() for accessory in accessories.text.split(',')]
-            
+            accessories = [accessory.strip()
+                           for accessory in accessories.text.split(',')]
+
             fashion_item = FashionItem(color, fabric, accessories)
             self.fashion_data.append(fashion_item)
 
@@ -93,7 +94,8 @@ class FashionTrendAnalyzer:
         plt.show()
 
     def predict_future_trends(self):
-        data = pd.DataFrame([(item.color, item.fabric) for item in self.fashion_data], columns=['color', 'fabric'])
+        data = pd.DataFrame([(item.color, item.fabric)
+                            for item in self.fashion_data], columns=['color', 'fabric'])
 
         kmeans = KMeans(n_clusters=3)
         kmeans.fit(data)
@@ -125,7 +127,8 @@ class FashionTrendAnalyzer:
                 color = article.find('div', class_='color').text
                 fabric = article.find('div', class_='fabric').text
                 accessories = article.find('div', class_='accessories')
-                accessories = [accessory.strip() for accessory in accessories.text.split(',')]
+                accessories = [accessory.strip()
+                               for accessory in accessories.text.split(',')]
 
                 competitor_item = FashionItem(color, fabric, accessories)
                 self.competitor_analysis.append(competitor_item)
@@ -142,5 +145,6 @@ future_trends = analyzer.predict_future_trends()
 report = analyzer.generate_comprehensive_report()
 user_preferences = {'color': 'blue', 'fabric': 'silk'}
 recommendations = analyzer.offer_recommendations(user_preferences)
-competitor_urls = ['https://example.com/competitor1', 'https://example.com/competitor2']
+competitor_urls = ['https://example.com/competitor1',
+                   'https://example.com/competitor2']
 analyzer.analyze_competitor_websites(competitor_urls)
