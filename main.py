@@ -43,10 +43,7 @@ class FashionTrendAnalyzer:
     def analyze_color_palettes(self):
         for item in self.fashion_data:
             color = item.color
-            if color in self.color_palette:
-                self.color_palette[color] += 1
-            else:
-                self.color_palette[color] = 1
+            self.color_palette[color] = self.color_palette.get(color, 0) + 1
 
     def visualize_color_palette(self):
         colors = list(self.color_palette.keys())
@@ -61,10 +58,8 @@ class FashionTrendAnalyzer:
     def analyze_fabric_preferences(self):
         for item in self.fashion_data:
             fabric = item.fabric
-            if fabric in self.fabric_preferences:
-                self.fabric_preferences[fabric] += 1
-            else:
-                self.fabric_preferences[fabric] = 1
+            self.fabric_preferences[fabric] = self.fabric_preferences.get(
+                fabric, 0) + 1
 
     def visualize_fabric_preferences(self):
         fabrics = list(self.fabric_preferences.keys())
@@ -78,10 +73,8 @@ class FashionTrendAnalyzer:
         for item in self.fashion_data:
             accessories = item.accessories
             for accessory in accessories:
-                if accessory in self.accessory_styles:
-                    self.accessory_styles[accessory] += 1
-                else:
-                    self.accessory_styles[accessory] = 1
+                self.accessory_styles[accessory] = self.accessory_styles.get(
+                    accessory, 0) + 1
 
     def visualize_accessory_styles(self):
         accessories = list(self.accessory_styles.keys())
@@ -107,13 +100,11 @@ class FashionTrendAnalyzer:
 
     def generate_comprehensive_report(self):
         report = ""
-        # Generate comprehensive report
         # Code to generate report goes here
         return report
 
     def offer_recommendations(self, user_preferences):
         recommendations = []
-        # Generate personalized fashion recommendations
         # Code to generate recommendations goes here
         return recommendations
 
